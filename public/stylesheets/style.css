@@ -120,6 +120,11 @@ p#welcome-btn {
 }
 
 .footer-container {
-    padding-top: 35px;
+    padding-top: 20px;
     text-align: center;
+}
+
+.fa {
+  padding: 5px;
+  color: #b9b5b5;
 }
