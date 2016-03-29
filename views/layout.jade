@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title= title
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+  
+    // START OF BACKGROUND -------------------------------
+    #bg
+      img(alt="background" src="images/background.jpg")
+      
+    // END OF BACKGROUND ---------------------------------
+    
+    // START OF NAVBAR --------------------------------
+    nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+      .container-fluid
+        // Container for the brand logo
+        a.navbar-left.navbar-brand(href='#')
+          img#brand-logo(alt='HAL' src='images/hal.png')
+        .project-name.navbar-nav.navbar-left
+            span HAL
+        // Container for the left and right portions of the navbar
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='#') Home
+          li.active
+            a(href='#') About HAL
+          li
+            a(href='#') Sign In
+            
+    // END OF NAVBAR-----------------------------------
+    
+    // START OF JUMBOTRON
+    .jumbotron
+      img(alt='HAL' src='images/hal.png')
+      p#welcome-text HAL - The Home ALarm System
+      p#welcome-text Welcomes you...
+      p#welcome-btn
+        a.btn.btn-danger.btn-lg(href='#', role='button') View
+    
+    // END OF JUMBOTRON
+
+    // START OF MAIN BODY ------------------------------------
+    // Reminder that this is similar to the render partial or yield call in rails
+    .main-content-container
+      block content
+    
+    // END OF MAIN BODY -------------------------------------- 
+
+    // START OF FOOTER ----------------------------------------
+    #footer
+      .footer-container
+        a(href='#')
+          i.fa.fa-github
+    
