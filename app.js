@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-
+var jsdom = require('jsdom');
+var $ = require('jquery');
 
 // Requiring the "controllers"
 var routes = require('./routes/index');
@@ -44,6 +45,10 @@ webSocketServer.on('connection', function(socket){
   socket.on('playVideo', function(data) {
     console.log(data);
   });
+  // socket.on("keyCodePress", function(data){
+  //   console.log("HI>>>>>>>>>>>>>>>>>>");
+  //   console.log(data);
+  // });
 });
 
 // catch 404 and forward to error handler
