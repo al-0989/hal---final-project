@@ -5,11 +5,14 @@ html
     link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+    
+          
   body
-  
     // START OF BACKGROUND -------------------------------
     #bg
-      img(alt="background" src="images/background.jpg")
+      img(alt="background" src="/images/background.jpg")
       
     // END OF BACKGROUND ---------------------------------
     
@@ -18,7 +21,7 @@ html
       .container-fluid
         // Container for the brand logo
         a.navbar-left.navbar-brand(href='#')
-          img#brand-logo(alt='HAL' src='images/hal.png')
+          img#brand-logo(alt='HAL' src='/images/hal.png')
         .project-name.navbar-nav.navbar-left
             span HAL
         // Container for the left and right portions of the navbar
@@ -34,14 +37,26 @@ html
     
     // START OF JUMBOTRON
     .jumbotron
-      img(alt='HAL' src='images/hal.png')
+      img(alt='HAL' src='/images/hal.png')
       p#welcome-text HAL - The Home ALarm System
       p#welcome-text Welcomes you...
       p#welcome-btn
-        a.btn.btn-danger.btn-lg(href='#', role='button') View
+        a.btn.btn-danger.btn-lg(href='http://localhost:3000/hal/video', role='button') View
     
     // END OF JUMBOTRON
-
+    
+    // Set up a socket
+    script.
+      //- alert("Boom A video!");
+      var socket = io('http://localhost:3000/');
+      console.log(socket);
+      socket.on("streamVideo", function(data){
+        console.log(data);
+      });
+      //- $('.btn-danger').on('click', function(){
+      //-   alert("inside click");
+      //- });
+      
     // START OF MAIN BODY ------------------------------------
     // Reminder that this is similar to the render partial or yield call in rails
     .main-content-container
