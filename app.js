@@ -29,14 +29,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res, next){
+  res.io = webSocketServer;
+  next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/hal',halCam);
 
-app.use(function(req, res, next){
-  res.io = webSocketServer;
-  next();
+// Setup the listener to respond to the webSocket call from the client
+webSocketServer.on('connection', function(socket){
+  socket.emit('streamVideo', "Connection Established");
+  socket.on('playVideo', function(data) {
+    console.log(data);
+  });
 });
 
 // catch 404 and forward to error handler
@@ -70,4 +77,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = {app: app, server:server};
+module.exports = {app: app, server: server};
