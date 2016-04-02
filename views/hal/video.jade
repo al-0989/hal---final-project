@@ -1,8 +1,9 @@
 extends ../layout
 
 block content
-  h1 Hello There! Lets watch a video
-  
+  script.
+    $(".main-content-container").html("<div class=video-container></div>");
+    $(".video-container").hide().fadeIn(2000);
   // Script to initiate opening the socket.
   //- script.
   //-   alert("Boom A video!");

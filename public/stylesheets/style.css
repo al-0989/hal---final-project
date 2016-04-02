@@ -34,7 +34,7 @@ body {
 .navbar.navbar-custom {
   background-color: rgba(86, 154, 204, 0.42);
   height: 85px;
-  margin-top:45px;
+  margin-top:35px;
 }
 
 .container-fluid{
@@ -79,11 +79,12 @@ img#brand-logo {
 
 .jumbotron {
   width: 41em;
-  margin: 90px auto 30px;
+  height: 55em;
+  margin: 70px auto 10px;
   position: relative;
   z-index: 1;
   background-color: transparent;
-
+  /*transition: opacity 1s;*/
 }
 
 p#welcome-text{
@@ -100,8 +101,9 @@ p#welcome-btn {
 }
 
 .main-content-container {
-  margin: 0px 0px 0px 50px !important;
-  padding: 30px;
+  width: 750px;
+  margin: 0px auto !important;
+  min-height: 674px;
 }
 
 #footer {
@@ -127,4 +129,23 @@ p#welcome-btn {
 .fa {
   padding: 5px;
   color: #b9b5b5;
+}
+
+.fadedOut {
+  opacity: 0;
+}
+
+img.jumbo {
+  width: 400px;
+  height: 400px;
+  margin-left: 45px;
+}
+
+.video-container {
+  width: 45em;
+  height: 30em;
+  margin: 175px auto 0px;
+  position: relative;
+  z-index: 1;
+  background-color: rgb(95, 116, 179);
 }

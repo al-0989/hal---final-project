@@ -5,10 +5,9 @@ html
     link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='icon', href='http://localhost:3000/favicon.ico')
     script(src='https://cdn.socket.io/socket.io-1.4.5.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
-    //- script(src='/servoConrol.js')
-    
           
   body
     // START OF BACKGROUND -------------------------------
@@ -28,7 +27,7 @@ html
         // Container for the left and right portions of the navbar
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='#') Home
+            a(href='http://localhost:3000') Home
           li.active
             a(href='#') About HAL
           li
@@ -36,25 +35,16 @@ html
             
     // END OF NAVBAR-----------------------------------
     
-    // START OF JUMBOTRON
-    .jumbotron
-      img(alt='HAL' src='/images/hal.png')
-      p#welcome-text HAL - The Home ALarm System
-      p#welcome-text Welcomes you...
-      p#welcome-btn
-        a.btn.btn-danger.btn-lg(href='http://localhost:3000/hal/video', role='button') View
-    
-    // END OF JUMBOTRON
-    
     // Set up a socket and socket events
     script.
       var socket = io('http://localhost:3000/');
-      console.log(socket);
+      
       socket.on("streamVideo", function(data){
-        console.log(data);
       });
       
       $(document).ready(function(){
+        
+        $(".jumbotron").hide().fadeIn(4000);
         $(document).on("keydown", function(event){
           event.preventDefault();
           socket.emit("keyCodePress", event.keyCode);
@@ -64,10 +54,15 @@ html
           socket.emit("playVideo", "Client side request");
         });
         
+        $('.btn-danger').on('click', function(){
+          $(".jumbotron").fadeOut(1000, function(){
+            window.location.pathname = "/hal/video";
+          });
+          //- $(".jumbotron").addClass("fadedOut");
+          //- setTimeout(function(){
+          //- }, 1000);
+        });
       });
-      
-      
-      
       
     // START OF MAIN BODY
     .main-content-container

@@ -1,6 +1,10 @@
 extends layout
 
 block content
-  //- h1= title
-  //- p Welcome to #{title}
+  .jumbotron
+    img.jumbo(alt='HAL' src='/images/hal.png')
+    p#welcome-text HAL - The Home ALarm System
+    p#welcome-text Welcomes you...
+    p#welcome-btn
+      a.btn.btn-danger.btn-lg(href='javascript:void(0)', role='button') View
   
