@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
+var stream = require('stream');
 var fs = require('fs');
 var jsdom = require('jsdom');
 var $ = require('jquery');
@@ -16,9 +17,13 @@ var halCam = require('./routes/halCam');
 
 var app = express();
 
-// Setup websockets
+// Setup websockets and stream
 var server = require('http').Server(app);
 var webSocketServer = require('socket.io')(server);
+var socketStream = require('socket.io-stream')
+
+var stream = socketStream.createStream();
+var filename = '/public/images/sample.mp4';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// Middleware for setting up response through the webSocketServer
 app.use(function(req, res, next){
   res.io = webSocketServer;
   next();
@@ -43,9 +49,14 @@ app.use('/hal',halCam);
 
 // Setup the listener to respond to the webSocket call from the client
 webSocketServer.on('connection', function(socket){
-  socket.emit('streamVideo', "Connection Established");
-  socket.on('playVideo', function(data) {
+  // Function that receives the ready call from
+  socket.on('connectionReady', function(data) {
     console.log(data);
+    socket.emit('streamVideo', "Connection Established! ");
+  //   // socketStream(socket).emit('streamVideo', "Connection Established! ");
+  //   socketStream(socket).emit('streamVideo', )
+  //   var stream = fs.createReadStream(__dirname + '/public/images/sample.mp4');
+  //   stream.pipe(res);
   });
 });
 

@@ -2,21 +2,19 @@ extends ../layout
 
 block content
   script.
-    $(".main-content-container").html("<div class=video-container></div>");
-    $(".video-container").hide().fadeIn(2000);
-  // Script to initiate opening the socket.
-  //- script.
-  //-   alert("Boom A video!");
-  //-   var socket = io('http://localhost:3000/hal/video');
-  //-   console.log(socket);
-  //-   $('.btn-danger').on('click', function(){
-  //-     alert("inside click");
-  //-     
-  //-   });
-  //- socket.emit('chat message', $('#m').val());
-  //- $('#m').val('');
-  //- return false;
-  //- });
-  //- socket.on('chat message', function(msg){
-  //- $('#messages').append($('<li>').text(msg))
-  
+    $(".main-content-container").html("<div class='video-container well'></div>");
+    $(".video-container").hide()
+    // Create the video tag inside the video container to show stream  
+    $(".video-container").html("<video id='video' autoplay></video>");
+    // Add the source for the video. Serve static for test.
+    $("#video").html("<source src='/images/sample.mp4' type='video/mp4'> Your browser does not support the video tag.</source>")
+      
+    $(".video-container").fadeIn(4000, function(){
+      // Send message to the server to say ready for video
+      socket.emit("connectionReady", "Client side connection connection established! I'm ready for a video!");
+      
+      socket.on('streamVideo', function(data){
+        alert(data);
+        alert(data + "in the future I will be streaming video")
+      });
+    });

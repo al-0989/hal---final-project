@@ -20,10 +20,8 @@ myBoard.on("ready", function(){
   var positionSmall = 0;
 
   router.get('/video', function(req, res, next){
-    // res.io.emit("streamVideo", "In hal/video");
     res.io.on("connection",function(socket){
       socket.on("keyCodePress", function(data){
-
         if (positionBig <= 0 && data === 39 ){
           return true;
         }
@@ -38,10 +36,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 39) {
-          console.log(data);
-          console.log(positionBig);
-          console.log(">>>>>>>>>>>>>>>>>>>>>");
-          positionBig -= 1;
+          positionBig -= 3;
           bigServo.to(positionBig);
           if (positionBig === 3){
             greenLed.on();
@@ -49,10 +44,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 37 ){
-          console.log(data);
-          console.log(positionBig);
-          console.log(">>>>>>>>>>>>>>>>>>>>>");
-          positionBig += 1;
+          positionBig += 3;
           bigServo.to(positionBig);
           if (positionBig === 177){
             greenLed.off();
@@ -60,10 +52,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 40) {
-          console.log(data);
-          console.log(positionSmall);
-          console.log(">>>>>>>>>>>>>>>>>>>>>");
-          positionSmall -= 1;
+          positionSmall -= 5;
           smallServo.to(positionSmall);
           if (positionSmall === 3){
             redLed.on();
@@ -71,21 +60,25 @@ myBoard.on("ready", function(){
         }
 
         if (data === 38){
-          console.log(data);
-          console.log(positionSmall);
-          console.log(">>>>>>>>>>>>>>>>>>>>>");
-          positionSmall += 1;
+          positionSmall += 5;
           smallServo.to(positionSmall);
           if (positionSmall === 177){
             redLed.off();
           }
         }
-      });
-    });
+      }); // End of Socket keyCodePress
+
+      // socket.on('connectionReady', function(data) {
+      //   console.log(data);
+      //   socket.emit('streamVideo', "Connection Established! ");
+      //   var stream = fs.createReadStream(__dirname + '/public/images/sample.mp4');
+      //   stream.pipe(res);
+      // });
+    }); // End of Socket on connection
+
     res.render("hal/video");
   }); // End of router response
 
 }); // End of board Setup
-
 
 module.exports = router;

@@ -39,8 +39,8 @@ html
     script.
       var socket = io('http://localhost:3000/');
       
-      socket.on("streamVideo", function(data){
-      });
+      //- socket.on("streamVideo", function(data){
+      //- });
       
       $(document).ready(function(){
         
@@ -48,10 +48,6 @@ html
         $(document).on("keydown", function(event){
           event.preventDefault();
           socket.emit("keyCodePress", event.keyCode);
-        });
-        
-        $('.btn-danger').on('click', function(){
-          socket.emit("playVideo", "Client side request");
         });
         
         $('.btn-danger').on('click', function(){
@@ -63,15 +59,15 @@ html
           //- }, 1000);
         });
       });
+    // END OF SOCKET Setup
       
     // START OF MAIN BODY
     .main-content-container
       block content
-    
     // END OF MAIN BODY -------------------------------------- 
 
     // START OF FOOTER ----------------------------------------
-    #footer
+    #footer.navbar-fixed-bottom
       .footer-container
         a(href='https://github.com/al-0989/hal---final-project')
           i.fa.fa-2x.fa-github

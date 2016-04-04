@@ -1,11 +1,3 @@
-/*html {
-  background: url('public/images/hal.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
-
 body {
   margin: 0px !important;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -103,7 +95,7 @@ p#welcome-btn {
 .main-content-container {
   width: 750px;
   margin: 0px auto !important;
-  min-height: 674px;
+  /*min-height: 674px;*/
 }
 
 #footer {
@@ -131,9 +123,9 @@ p#welcome-btn {
   color: #b9b5b5;
 }
 
-.fadedOut {
+/*.fadedOut {
   opacity: 0;
-}
+}*/
 
 img.jumbo {
   width: 400px;
@@ -142,10 +134,16 @@ img.jumbo {
 }
 
 .video-container {
-  width: 45em;
-  height: 30em;
+  width: 50em;
+  height: 35em;
   margin: 175px auto 0px;
+  border: solid rgb(162, 162, 162) 2px;
   position: relative;
   z-index: 1;
-  background-color: rgb(95, 116, 179);
+  background-color: rgb(87, 87, 87);
+}
+
+#video {
+  width: 47em;
+  height: 33em;
 }
