@@ -6,10 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var stream = require('stream');
-var SerialPort = require("serialport").SerialPort
-var serialPort = new SerialPort("/dev/tty-usbserial1", {
-  baudrate: 57600
-});
+// var SerialPort = require("serialport").SerialPort
+// var serialPort = new SerialPort("/dev/tty-usbserial1", {
+//   baudrate: 57600
+// });
 var fs = require('fs');
 var jsdom = require('jsdom');
 var $ = require('jquery');
