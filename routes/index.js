@@ -4,7 +4,7 @@ var router = express.Router();
 var raspicam = require('raspicam');
 
 // Create a new raspicam instance
-var camera = new Raspicam();
+var camera = new RaspiCam();
 
 camera.start()
 
