@@ -27,7 +27,7 @@ html
         // Container for the left and right portions of the navbar
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='http://localhost:3000') Home
+            a(href='http://192.168.2.2:3000') Home
           li.active
             a(href='#') About HAL
           li
@@ -37,7 +37,7 @@ html
     
     // Set up a socket and socket events
     script.
-      var socket = io('http://localhost:3000/');
+      var socket = io('http://192.168.2.2:3000/');
       
       //- socket.on("streamVideo", function(data){
       //- });
