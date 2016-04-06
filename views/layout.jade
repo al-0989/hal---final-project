@@ -8,6 +8,7 @@ html
     link(rel='icon', href='http://localhost:3000/favicon.ico')
     script(src='https://cdn.socket.io/socket.io-1.4.5.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+    
           
   body
     // START OF BACKGROUND -------------------------------
@@ -27,24 +28,23 @@ html
         // Container for the left and right portions of the navbar
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='http://localhost:3000') Home
+            a(href='http://192.168.2.2:3000') Home
           li.active
             a(href='#') About HAL
-          li
-            a(href='#') Sign In
+          //- li
+          //-   a(href='#') Sign In
             
     // END OF NAVBAR-----------------------------------
     
     // Set up a socket and socket events
     script.
-      var socket = io('http://localhost:3000/');
-      
+      var socket = io('http://192.168.2.2:3000/');
       //- socket.on("streamVideo", function(data){
       //- });
       
       $(document).ready(function(){
         
-        $(".jumbotron").hide().fadeIn(4000);
+        $(".jumbotron").hide().fadeIn(2500);
         $(document).on("keydown", function(event){
           event.preventDefault();
           socket.emit("keyCodePress", event.keyCode);
@@ -60,14 +60,14 @@ html
         });
       });
     // END OF SOCKET Setup
-      
+    
     // START OF MAIN BODY
     .main-content-container
       block content
     // END OF MAIN BODY -------------------------------------- 
 
     // START OF FOOTER ----------------------------------------
-    #footer.navbar-fixed-bottom
+    #footer
       .footer-container
         a(href='https://github.com/al-0989/hal---final-project')
           i.fa.fa-2x.fa-github
