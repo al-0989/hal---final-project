@@ -1,16 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var five = require("johnny-five");
-var socketStream = require('socket.io-stream')
-var raspicam = require('raspicam');
-var fs = require('fs');
-
-// var app = express();
-// // Setup websockets and stream
-// var server = require('http').Server(app);
-// var webSocketServer = require('socket.io')(server);
-
-// var filename = '/public/images/sample.mp4';
 
 var myBoard = new five.Board();
 
@@ -30,14 +20,6 @@ myBoard.on("ready", function(){
   var positionSmall = 0;
 
   router.get('/video', function(req, res, next){
-    // var ss = socketStream.createStream();
-
-    // var cameraOptions = {
-    //   mode        : "r",
-    //   output      : 'images/camera.h264'
-    // };
-    // // Create a new raspicam instance
-    // var camera = new raspicam(cameraOptions);
 
     res.io.on("connection",function(socket){
       socket.on("keyCodePress", function(data){
@@ -86,12 +68,6 @@ myBoard.on("ready", function(){
           }
         }
       }); // End of Socket keyCodePress
-
-      // camera.start()
-      // var stream = ss.createStream();
-      // var filename = '/images/camera.h264';
-      // ss(socket).emit("streamVideo", stream);
-      // stream.pipe(fs.createWriteStream(filename));
     }); // End of Socket on connection
     res.render("hal/video");
   }); // End of router response
