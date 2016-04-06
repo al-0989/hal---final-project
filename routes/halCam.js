@@ -37,7 +37,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 39) {
-          positionBig -= 3;
+          positionBig -= 1;
           bigServo.to(positionBig);
           if (positionBig === 3){
             greenLed.on();
@@ -45,7 +45,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 37 ){
-          positionBig += 3;
+          positionBig += 1;
           bigServo.to(positionBig);
           if (positionBig === 177){
             greenLed.off();
@@ -53,7 +53,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 40) {
-          positionSmall -= 5;
+          positionSmall -= 1;
           smallServo.to(positionSmall);
           if (positionSmall === 3){
             redLed.on();
@@ -61,7 +61,7 @@ myBoard.on("ready", function(){
         }
 
         if (data === 38){
-          positionSmall += 5;
+          positionSmall += 1;
           smallServo.to(positionSmall);
           if (positionSmall === 177){
             redLed.off();
