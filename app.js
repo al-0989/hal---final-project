@@ -26,7 +26,6 @@ var server = require('http').Server(app);
 var webSocketServer = require('socket.io')(server);
 var socketStream = require('socket.io-stream')
 
-var stream = socketStream.createStream();
 var filename = '/public/images/sample.mp4';
 
 // view engine setup
@@ -54,14 +53,18 @@ app.use('/hal',halCam);
 // Setup the listener to respond to the webSocket call from the client
 webSocketServer.on('connection', function(socket){
   // Function that receives the ready call from
-  socket.on('connectionReady', function(data) {
+  // var ss = socketStream.createStream();
+  // socketStream(socket).on('connectionReady', function(stream) {
+  //   fs.createReadStream('/public/test.txt').pipe(stream)
+  //   console.log(stream);
+  socket.on("connectionReady", function(data){
     console.log(data);
-    socket.emit('streamVideo', "Connection Established! ");
+    socket.emit('streamVideo', "http://192.168.2.2:9000/?action=stream");
+  });
   //   // socketStream(socket).emit('streamVideo', "Connection Established! ");
   //   socketStream(socket).emit('streamVideo', )
   //   var stream = fs.createReadStream(__dirname + '/public/images/sample.mp4');
   //   stream.pipe(res);
-  });
 });
 
 // catch 404 and forward to error handler

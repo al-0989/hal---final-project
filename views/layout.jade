@@ -8,6 +8,8 @@ html
     link(rel='icon', href='http://localhost:3000/favicon.ico')
     script(src='https://cdn.socket.io/socket.io-1.4.5.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+    script(src='/javascripts/video.js')
+    
           
   body
     // START OF BACKGROUND -------------------------------
@@ -37,8 +39,7 @@ html
     
     // Set up a socket and socket events
     script.
-      var socket = io('http://192.168.2.2:3000/');
-      
+      var socket = io('http://localhost:3000/');
       //- socket.on("streamVideo", function(data){
       //- });
       
@@ -60,14 +61,34 @@ html
         });
       });
     // END OF SOCKET Setup
-      
+    
     // START OF MAIN BODY
     .main-content-container
       block content
+      //- script.
+      //-   console.log("beging script");
+      //-   
+      //-   debugger
+      //-   $(".main-content-container").html("<div class='video-container well'></div>");
+      //-   $(".video-container").hide()
+      //-   // Create the video tag inside the video container to show stream  
+      //-   $(".video-container").html("<video id='video' autoplay></video>");
+      //-   // Add the source for the video. Serve static for test.
+      //-   $("#video").html("<source src='/images/sample.mp4' type='video/mp4'> Your browser does not support the video tag.</source>")
+      //-   $(".video-container").fadeIn(4000, function(){
+      //-     // Send message to the server to say ready for video
+      //-     socket.emit("connectionReady", "Client side connection connection established! I'm ready for a video!");
+      //-     //- ss(socket).emit("connectionReady", strm);
+      //-     //- stream.pipe(fs.createWriteStream("Client side connection connection established! I'm ready for a video!"));
+      //-     //- 
+      //-     //- ss(socket).on('streamVideo', function(strm){
+      //-     //-   fs.createReadStream(filename).pipe(strm);
+      //-     //- });
+        //- });
     // END OF MAIN BODY -------------------------------------- 
 
     // START OF FOOTER ----------------------------------------
-    #footer.navbar-fixed-bottom
+    #footer
       .footer-container
         a(href='https://github.com/al-0989/hal---final-project')
           i.fa.fa-2x.fa-github
