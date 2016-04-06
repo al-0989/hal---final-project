@@ -95,12 +95,13 @@ p#welcome-btn {
 .main-content-container {
   width: 750px;
   margin: 0px auto !important;
-  /*min-height: 674px;*/
+  height: 675px;
 }
 
 #footer {
   background-color: rgb(0, 0, 0);
   height: 75px;
+  margin-top: 75px;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
@@ -145,5 +146,5 @@ img.jumbo {
 
 #video {
   width: 47em;
-  height: 33em;
+  height: 32em;
 }
