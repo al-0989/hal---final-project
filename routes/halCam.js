@@ -14,6 +14,7 @@ myBoard.on("ready", function(){
   // Make new servo
   var bigServo = new five.Servo({ pin: 10, startAt: 0});
   var smallServo = new five.Servo({ pin: 9, startAt: 0});
+  var waveServo = new five.Servo({ pin: 8, startAt: 90});
 
   var positionBig = 0;
   var positionSmall = 0;
@@ -34,6 +35,14 @@ myBoard.on("ready", function(){
         }
         if (positionSmall >= 180 && data === 38 ){
           return true;
+        }
+        
+        if (data === 87){
+          waveServo.sweep({range: [75, 110]});
+          setTimeout(function(){
+            waveServo.stop();
+            waveServo.center();
+          }, 5000);
         }
 
         if (data === 39) {

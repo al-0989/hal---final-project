@@ -57,19 +57,6 @@ webSocketServer.on('connection', function(socket){
     console.log(data);
     socket.emit('streamVideo', "http://192.168.2.2:9000/?action=stream");
   });
-
-  // socket.on("wave", function(data){
-  //   myBoard.on("ready", function(){
-  //   console.log("here");
-  //     var waveServo = new five.Servo({ pin: 8, startAt: 90});
-  //     console.log(data);
-  //     waveServo.sweep({range: [75, 110]});
-  //     setTimeout(function(){
-  //       waveServo.stop();
-  //       waveServo.center();
-  //     }, 5000);
-  //   });
-  // });
 });
 
 // catch 404 and forward to error handler
