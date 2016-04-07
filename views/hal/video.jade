@@ -13,9 +13,20 @@ block content
     
     socket.on('streamVideo', function(data){
       $(".video-container").html("<iframe id='video' src=" + data + ">")
+      $(".video-container").append("<a href='javascript:void(0)' role='button' class='btn btn-danger btn-lg terminate'>Terminate</a>")
+      $(".video-container").append("<audio class='mr-roboto' autoplay><source src='/images/music.mp3' type='audio/mpeg'> Your browser does not support the audio element.</audio>")
+      setTimeout(function(){
+        $("audio").animate({volume: 0}, 5000);
+      }, 45000);
     });
     
-    $(".video-container").fadeIn(2500);
+    $(".video-container").fadeIn(2500, function(){
+      $("#footer").show();
+    });
+    
+    $(document).on("click", ".terminate", function(){
+      $(".video-container").append("<audio autoplay><source src='/images/afraid.mp3' type='audio/mpeg'> Your browser does not support the audio element.</audio>")
+    });
       //- ss(socket).emit("connectionReady", stream);
       //- stream.pipe(fs.createWriteStream("Client side connection connection established! I'm ready for a video!"));
       

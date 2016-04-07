@@ -52,19 +52,24 @@ app.use('/hal',halCam);
 
 // Setup the listener to respond to the webSocket call from the client
 webSocketServer.on('connection', function(socket){
-  // Function that receives the ready call from
-  // var ss = socketStream.createStream();
-  // socketStream(socket).on('connectionReady', function(stream) {
-  //   fs.createReadStream('/public/test.txt').pipe(stream)
-  //   console.log(stream);
+
   socket.on("connectionReady", function(data){
     console.log(data);
     socket.emit('streamVideo', "http://192.168.2.2:9000/?action=stream");
   });
-  //   // socketStream(socket).emit('streamVideo', "Connection Established! ");
-  //   socketStream(socket).emit('streamVideo', )
-  //   var stream = fs.createReadStream(__dirname + '/public/images/sample.mp4');
-  //   stream.pipe(res);
+
+  // socket.on("wave", function(data){
+  //   myBoard.on("ready", function(){
+  //   console.log("here");
+  //     var waveServo = new five.Servo({ pin: 8, startAt: 90});
+  //     console.log(data);
+  //     waveServo.sweep({range: [75, 110]});
+  //     setTimeout(function(){
+  //       waveServo.stop();
+  //       waveServo.center();
+  //     }, 5000);
+  //   });
+  // });
 });
 
 // catch 404 and forward to error handler

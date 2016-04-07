@@ -38,19 +38,21 @@ html
     
     // Set up a socket and socket events
     script.
-      var socket = io('http://192.168.2.2:3000/');
+      var socket = io('http://localhost:3000/');
       //- socket.on("streamVideo", function(data){
       //- });
       
       $(document).ready(function(){
         
-        $(".jumbotron").hide().fadeIn(2500);
+        $(".jumbotron").hide().fadeIn(2500)
+      
         $(document).on("keydown", function(event){
           event.preventDefault();
           socket.emit("keyCodePress", event.keyCode);
         });
         
         $('.btn-danger').on('click', function(){
+          $("#footer").hide();
           $(".jumbotron").fadeOut(1000, function(){
             window.location.pathname = "/hal/video";
           });
@@ -69,7 +71,7 @@ html
     // START OF FOOTER ----------------------------------------
     #footer
       .footer-container
-        a(href='https://github.com/al-0989/hal---final-project')
+        a(href='https://github.com/al-0989/hal-the-home-alarm-system')
           i.fa.fa-2x.fa-github
         a(href='https://ca.linkedin.com/in/anngocla')
           i.fa.fa-2x.fa-linkedin

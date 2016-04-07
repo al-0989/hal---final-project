@@ -17,6 +17,8 @@ myBoard.on("ready", function(){
   });
   var smallServo = new five.Servo({ pin: 9,
                                     startAt: 0});
+
+  var waveServo = new five.Servo({ pin: 8, startAt: 0});
   var positionBig = 0;
   var positionSmall = 0;
 
@@ -37,9 +39,9 @@ myBoard.on("ready", function(){
     }
 
     console.log('got "keypress"!'+ key.name);
-    if (key && key.ctrl && key.name == 'c') {
-      process.stdin.pause();
-    }
+    // if (key && key.ctrl && key.name == 'c') {
+    //   process.stdin.pause();
+    // }
 
     if (key.name === "right") {
       console.log(key.name);
@@ -89,6 +91,12 @@ myBoard.on("ready", function(){
       }
     }
   });
+  // waveServo.center();
+  waveServo.sweep({range: [75, 110]});
+  setTimeout(function(){waveServo.stop();
+  waveServo.center();}, 5000);
+
+
 
   process.stdin.setRawMode(true);
   process.stdin.resume();

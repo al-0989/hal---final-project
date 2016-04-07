@@ -139,7 +139,7 @@ img.jumbo {
 .video-container {
   width: 50em;
   height: 35em;
-  margin: 175px auto 4em;
+  margin: 175px auto 10%;
   border: solid rgb(162, 162, 162) 2px;
   position: relative;
   z-index: 1;
@@ -149,4 +149,10 @@ img.jumbo {
 #video {
   width: 47em;
   height: 32em;
+}
+
+.terminate {
+  display: block !important;
+  width: 50%;
+  margin: 10% auto;
 }

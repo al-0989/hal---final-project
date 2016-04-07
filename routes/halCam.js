@@ -4,6 +4,7 @@ var five = require("johnny-five");
 
 var myBoard = new five.Board();
 
+
 myBoard.on("ready", function(){
 
   // number here indicates the pin that the LED is connected to
@@ -11,17 +12,16 @@ myBoard.on("ready", function(){
   var redLed = new five.Led(12);
 
   // Make new servo
-  var bigServo = new five.Servo({ pin: 10,
-                                  startAt: 0
-  });
-  var smallServo = new five.Servo({ pin: 9,
-                                    startAt: 0});
+  var bigServo = new five.Servo({ pin: 10, startAt: 0});
+  var smallServo = new five.Servo({ pin: 9, startAt: 0});
+
   var positionBig = 0;
   var positionSmall = 0;
 
   router.get('/video', function(req, res, next){
-
+    console.log("MADE IT TO VIDEO")
     res.io.on("connection",function(socket){
+
       socket.on("keyCodePress", function(data){
         if (positionBig <= 0 && data === 39 ){
           return true;
